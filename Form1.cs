@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WFA_PhoneBook_DC.Classes;
 
@@ -16,7 +12,8 @@ namespace WFA_PhoneBook_DC
     {
         private List<Contact> contacts;
         private Contact contactSelected;
-        private string path = Application.StartupPath + @"\list.txt";        
+        private string path = Application.StartupPath + @"\list.txt";
+
         public Form1()
         {
             InitializeComponent();
@@ -24,7 +21,6 @@ namespace WFA_PhoneBook_DC
             //This method is written to reset the cursor type to default cursor for form controls.
             DefaultCursorSetting();
             contacts = new List<Contact>();
-            
         }
 
         private void SaveRecordsToFile()
@@ -33,19 +29,17 @@ namespace WFA_PhoneBook_DC
             string[] recordLines = new string[contacts.Count];
             foreach (Contact item in contacts)
             {
-                recordLines[contacts.IndexOf(item)] =$"{item.Name}|{item.Surname}|{item.PhoneNumber}|{item.Category}|{item.IsFemale}|{item.IsFavorite}";
+                recordLines[contacts.IndexOf(item)] = $"{item.Name}|{item.Surname}|{item.PhoneNumber}|{item.Category}|{item.IsFemale}|{item.IsFavorite}";
             }
 
             System.IO.File.WriteAllLines(path, recordLines);
-
         }
 
         private void LoadRecordsFromFile()
         {
-
             if (File.Exists(path))
             {
-                string[] recordLines= System.IO.File.ReadAllLines(path);
+                string[] recordLines = System.IO.File.ReadAllLines(path);
                 foreach (string item in recordLines)
                 {
                     Contact contact = new Contact
@@ -63,15 +57,14 @@ namespace WFA_PhoneBook_DC
 
                 LoadToListBox();
             }
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadRecordsFromFile();
             gbContactInfo.Visible = false;
-
         }
+
         private void btnAddNew_Click(object sender, EventArgs e)
         {
             ClearTextBoxes(txtName, txtSurname, mtxtPhone);
@@ -82,8 +75,8 @@ namespace WFA_PhoneBook_DC
             FillCategoryComboBox();
             cmbCategory.SelectedIndex = -1;
             gbContactInfo.Visible = true;
-
         }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Contact contact = new Contact
@@ -96,13 +89,13 @@ namespace WFA_PhoneBook_DC
                 IsFavorite = (chkFavorite.Checked) ? true : false
             };
 
-            contacts.Add(contact);            
+            contacts.Add(contact);
             LoadToListBox();
             SaveRecordsToFile();
             ClearTextBoxes(txtName, txtSurname, mtxtPhone);
             gbContactInfo.Visible = false;
-
         }
+
         private void lbContacts_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             contactSelected = contacts[lbContacts.SelectedIndex];
@@ -120,6 +113,7 @@ namespace WFA_PhoneBook_DC
             HideShowButtons(true, btnAdd);
             gbContactInfo.Visible = true;
         }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             contactSelected.Name = txtName.Text?.Trim();
@@ -134,10 +128,11 @@ namespace WFA_PhoneBook_DC
             ClearTextBoxes(txtName, txtSurname, mtxtPhone);
             gbContactInfo.Visible = false;
         }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult result= MessageBox.Show($"{contactSelected}\n Are you sure to remove above contact from your PhoneBook?","Delete Contact",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-            if (result==DialogResult.Yes)
+            DialogResult result = MessageBox.Show($"{contactSelected}\n Are you sure to remove above contact from your PhoneBook?", "Delete Contact", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
             {
                 contacts.Remove(contactSelected);
             }
@@ -150,6 +145,7 @@ namespace WFA_PhoneBook_DC
             chkFavorite.Checked = false;
             gbContactInfo.Visible = false;
         }
+
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             lbContacts.Items.Clear();
@@ -162,28 +158,29 @@ namespace WFA_PhoneBook_DC
                     lbContacts.Items.Add(show);
                 }
             }
-
         }
 
         private void btnAtoZ_Click(object sender, EventArgs e)
         {
-            contacts= contacts.OrderBy(c => c.Name).ToList();
+            contacts = contacts.OrderBy(c => c.Name).ToList();
             LoadToListBox();
         }
 
         private void btnZtoA_Click(object sender, EventArgs e)
         {
-            contacts=contacts.OrderByDescending(c => c.Name).ToList();
+            contacts = contacts.OrderByDescending(c => c.Name).ToList();
             LoadToListBox();
         }
+
         private void LoadToListBox()
         {
-            lbContacts.Items.Clear();            
+            lbContacts.Items.Clear();
             foreach (Contact item in contacts)
             {
-                lbContacts.Items.Add($"{(contacts.IndexOf(item)+1).ToString()}: {item}");  
+                lbContacts.Items.Add($"{(contacts.IndexOf(item) + 1).ToString()}: {item}");
             }
         }
+
         private void FillCategoryComboBox()
         {
             Category[] list = Enum.GetValues<Category>();
@@ -192,6 +189,7 @@ namespace WFA_PhoneBook_DC
             cmbCategory.ValueMember = "Value";
             cmbCategory.DataSource = list;
         }
+
         /// <summary>
         /// Resets the Form's cursor type.
         /// </summary>
@@ -202,6 +200,7 @@ namespace WFA_PhoneBook_DC
                 item.Cursor = Cursors.Default;
             }
         }
+
         private void HideShowButtons(bool hide, params Button[] buttons)
         {
             foreach (Button item in buttons)
@@ -212,13 +211,13 @@ namespace WFA_PhoneBook_DC
                     item.Visible = true;
             }
         }
+
         private void ClearTextBoxes(params TextBoxBase[] txts)
         {
             foreach (TextBoxBase item in txts)
             {
                 item.Text = string.Empty;
             }
-            
         }
     }
 }
