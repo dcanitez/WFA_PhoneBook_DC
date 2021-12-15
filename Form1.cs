@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,18 +16,59 @@ namespace WFA_PhoneBook_DC
     {
         private List<Contact> contacts;
         private Contact contactSelected;
+        private string path = Application.StartupPath + @"\list.txt";        
         public Form1()
         {
             InitializeComponent();
-            //When we use split container in our form it changes the cursor type to VSplit
+            //When we use split container in our form, it changes the cursor type to VSplit
             //This method is written to reset the cursor type to default cursor for form controls.
             DefaultCursorSetting();
             contacts = new List<Contact>();
+            
         }
 
+        private void SaveRecordsToFile()
+        {
+            string path = Application.StartupPath + @"\list.txt";
+            string[] recordLines = new string[contacts.Count];
+            foreach (Contact item in contacts)
+            {
+                recordLines[contacts.IndexOf(item)] =$"{item.Name}|{item.Surname}|{item.PhoneNumber}|{item.Category}|{item.IsFemale}|{item.IsFavorite}";
+            }
+
+            System.IO.File.WriteAllLines(path, recordLines);
+
+        }
+
+        private void LoadRecordsFromFile()
+        {
+
+            if (File.Exists(path))
+            {
+                string[] recordLines= System.IO.File.ReadAllLines(path);
+                foreach (string item in recordLines)
+                {
+                    Contact contact = new Contact
+                    {
+                        Name = item.Split('|')[0],
+                        Surname = item.Split('|')[1],
+                        PhoneNumber = item.Split('|')[2],
+                        Category = (Category)Enum.Parse(typeof(Category), item.Split('|')[3]),
+                        IsFemale = Convert.ToBoolean(item.Split('|')[4]),
+                        IsFavorite = Convert.ToBoolean(item.Split('|')[5]),
+                    };
+
+                    contacts.Add(contact);
+                }
+
+                LoadToListBox();
+            }
+
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            LoadRecordsFromFile();
             gbContactInfo.Visible = false;
 
         }
@@ -56,6 +98,7 @@ namespace WFA_PhoneBook_DC
 
             contacts.Add(contact);            
             LoadToListBox();
+            SaveRecordsToFile();
             ClearTextBoxes(txtName, txtSurname, mtxtPhone);
             gbContactInfo.Visible = false;
 
@@ -87,6 +130,9 @@ namespace WFA_PhoneBook_DC
             contactSelected.IsFavorite = (chkFavorite.Checked) ? true : false;
 
             LoadToListBox();
+            SaveRecordsToFile();
+            ClearTextBoxes(txtName, txtSurname, mtxtPhone);
+            gbContactInfo.Visible = false;
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -97,10 +143,12 @@ namespace WFA_PhoneBook_DC
             }
 
             LoadToListBox();
+            SaveRecordsToFile();
 
             ClearTextBoxes(txtName, txtSurname, mtxtPhone);
             rdMale.Checked = true;
             chkFavorite.Checked = false;
+            gbContactInfo.Visible = false;
         }
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
@@ -117,6 +165,17 @@ namespace WFA_PhoneBook_DC
 
         }
 
+        private void btnAtoZ_Click(object sender, EventArgs e)
+        {
+            contacts= contacts.OrderBy(c => c.Name).ToList();
+            LoadToListBox();
+        }
+
+        private void btnZtoA_Click(object sender, EventArgs e)
+        {
+            contacts=contacts.OrderByDescending(c => c.Name).ToList();
+            LoadToListBox();
+        }
         private void LoadToListBox()
         {
             lbContacts.Items.Clear();            
@@ -160,18 +219,6 @@ namespace WFA_PhoneBook_DC
                 item.Text = string.Empty;
             }
             
-        }
-
-        private void btnAtoZ_Click(object sender, EventArgs e)
-        {
-            contacts= contacts.OrderBy(c => c.Name).ToList();
-            LoadToListBox();
-        }
-
-        private void btnZtoA_Click(object sender, EventArgs e)
-        {
-            contacts=contacts.OrderByDescending(c => c.Name).ToList();
-            LoadToListBox();
         }
     }
 }
