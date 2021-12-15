@@ -121,6 +121,9 @@
   <data name="UserAdd_40960" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\UserAdd_40960.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="sort_alphabetical_descending_icon_135170" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sort_alphabetical_descending_icon_135170.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="1491254405-plusaddmoredetail_82972" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1491254405-plusaddmoredetail_82972.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -129,5 +132,8 @@
   </data>
   <data name="Save_Icon_icon-icons.com_69139" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Save_Icon_icon-icons.com_69139.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sort_alphabetical_ascending_icon_135171" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sort_alphabetical_ascending_icon_135171.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

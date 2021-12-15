@@ -54,7 +54,7 @@ namespace WFA_PhoneBook_DC
                 IsFavorite = (chkFavorite.Checked) ? true : false
             };
 
-            contacts.Add(contact);
+            contacts.Add(contact);            
             LoadToListBox();
             ClearTextBoxes(txtName, txtSurname, mtxtPhone);
             gbContactInfo.Visible = false;
@@ -162,5 +162,16 @@ namespace WFA_PhoneBook_DC
             
         }
 
+        private void btnAtoZ_Click(object sender, EventArgs e)
+        {
+            contacts= contacts.OrderBy(c => c.Name).ToList();
+            LoadToListBox();
+        }
+
+        private void btnZtoA_Click(object sender, EventArgs e)
+        {
+            contacts=contacts.OrderByDescending(c => c.Name).ToList();
+            LoadToListBox();
+        }
     }
 }

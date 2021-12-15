@@ -83,6 +83,26 @@ namespace WFA_PhoneBook_DC.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap sort_alphabetical_ascending_icon_135171 {
+            get {
+                object obj = ResourceManager.GetObject("sort_alphabetical_ascending_icon_135171", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sort_alphabetical_descending_icon_135170 {
+            get {
+                object obj = ResourceManager.GetObject("sort_alphabetical_descending_icon_135170", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap trash_can_115312 {
             get {
                 object obj = ResourceManager.GetObject("trash-can_115312", resourceCulture);

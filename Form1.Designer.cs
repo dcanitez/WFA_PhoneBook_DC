@@ -53,6 +53,8 @@ namespace WFA_PhoneBook_DC
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnZtoA = new System.Windows.Forms.Button();
+            this.btnAtoZ = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -64,12 +66,13 @@ namespace WFA_PhoneBook_DC
             // 
             this.splitContainer1.Cursor = System.Windows.Forms.Cursors.VSplit;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnAtoZ);
+            this.splitContainer1.Panel1.Controls.Add(this.btnZtoA);
             this.splitContainer1.Panel1.Controls.Add(this.lbContacts);
             this.splitContainer1.Panel1.Controls.Add(this.txtSearch);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
@@ -80,25 +83,25 @@ namespace WFA_PhoneBook_DC
             this.splitContainer1.Panel2.Controls.Add(this.gbContactInfo);
             this.splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitContainer1.Size = new System.Drawing.Size(693, 501);
-            this.splitContainer1.SplitterDistance = 335;
+            this.splitContainer1.SplitterDistance = 363;
             this.splitContainer1.TabIndex = 0;
             // 
             // lbContacts
             // 
             this.lbContacts.FormattingEnabled = true;
             this.lbContacts.ItemHeight = 20;
-            this.lbContacts.Location = new System.Drawing.Point(13, 59);
+            this.lbContacts.Location = new System.Drawing.Point(13, 99);
             this.lbContacts.Name = "lbContacts";
-            this.lbContacts.Size = new System.Drawing.Size(298, 424);
+            this.lbContacts.Size = new System.Drawing.Size(330, 384);
             this.lbContacts.TabIndex = 2;
             this.lbContacts.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbContacts_MouseDoubleClick);
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(128, 21);
+            this.txtSearch.Location = new System.Drawing.Point(14, 61);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PlaceholderText = "Search";
-            this.txtSearch.Size = new System.Drawing.Size(183, 27);
+            this.txtSearch.PlaceholderText = "Search...";
+            this.txtSearch.Size = new System.Drawing.Size(241, 27);
             this.txtSearch.TabIndex = 1;
             this.toolTip1.SetToolTip(this.txtSearch, "Search the contact list");
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
@@ -118,7 +121,7 @@ namespace WFA_PhoneBook_DC
             // 
             this.btnAddNew.Image = global::WFA_PhoneBook_DC.Properties.Resources.UserAdd_40960;
             this.btnAddNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddNew.Location = new System.Drawing.Point(174, 12);
+            this.btnAddNew.Location = new System.Drawing.Point(146, 13);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(168, 41);
             this.btnAddNew.TabIndex = 1;
@@ -149,7 +152,7 @@ namespace WFA_PhoneBook_DC
             this.gbContactInfo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.gbContactInfo.Location = new System.Drawing.Point(19, 59);
             this.gbContactInfo.Name = "gbContactInfo";
-            this.gbContactInfo.Size = new System.Drawing.Size(323, 424);
+            this.gbContactInfo.Size = new System.Drawing.Size(295, 424);
             this.gbContactInfo.TabIndex = 0;
             this.gbContactInfo.TabStop = false;
             this.gbContactInfo.Text = "Add/Edit/Delete";
@@ -157,7 +160,7 @@ namespace WFA_PhoneBook_DC
             // chkFavorite
             // 
             this.chkFavorite.AutoSize = true;
-            this.chkFavorite.Location = new System.Drawing.Point(160, 263);
+            this.chkFavorite.Location = new System.Drawing.Point(148, 280);
             this.chkFavorite.Name = "chkFavorite";
             this.chkFavorite.Size = new System.Drawing.Size(141, 27);
             this.chkFavorite.TabIndex = 6;
@@ -194,7 +197,7 @@ namespace WFA_PhoneBook_DC
             this.cmbCategory.FormattingEnabled = true;
             this.cmbCategory.Location = new System.Drawing.Point(107, 177);
             this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(194, 28);
+            this.cmbCategory.Size = new System.Drawing.Size(182, 28);
             this.cmbCategory.TabIndex = 4;
             // 
             // mtxtPhone
@@ -203,7 +206,7 @@ namespace WFA_PhoneBook_DC
             this.mtxtPhone.Location = new System.Drawing.Point(107, 137);
             this.mtxtPhone.Mask = "(999) 000-0000";
             this.mtxtPhone.Name = "mtxtPhone";
-            this.mtxtPhone.Size = new System.Drawing.Size(194, 27);
+            this.mtxtPhone.Size = new System.Drawing.Size(182, 27);
             this.mtxtPhone.TabIndex = 3;
             // 
             // txtSurname
@@ -212,7 +215,7 @@ namespace WFA_PhoneBook_DC
             this.txtSurname.Location = new System.Drawing.Point(107, 100);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.PlaceholderText = "Doe";
-            this.txtSurname.Size = new System.Drawing.Size(194, 27);
+            this.txtSurname.Size = new System.Drawing.Size(182, 27);
             this.txtSurname.TabIndex = 2;
             // 
             // txtName
@@ -221,7 +224,7 @@ namespace WFA_PhoneBook_DC
             this.txtName.Location = new System.Drawing.Point(107, 64);
             this.txtName.Name = "txtName";
             this.txtName.PlaceholderText = "John";
-            this.txtName.Size = new System.Drawing.Size(194, 27);
+            this.txtName.Size = new System.Drawing.Size(182, 27);
             this.txtName.TabIndex = 2;
             // 
             // btnSave
@@ -229,7 +232,7 @@ namespace WFA_PhoneBook_DC
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnSave.Image = global::WFA_PhoneBook_DC.Properties.Resources.Save_Icon_icon_icons_com_69139;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSave.Location = new System.Drawing.Point(143, 374);
+            this.btnSave.Location = new System.Drawing.Point(131, 374);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(72, 44);
             this.btnSave.TabIndex = 1;
@@ -244,7 +247,7 @@ namespace WFA_PhoneBook_DC
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAdd.Image = global::WFA_PhoneBook_DC.Properties.Resources._1491254405_plusaddmoredetail_82972;
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAdd.Location = new System.Drawing.Point(221, 374);
+            this.btnAdd.Location = new System.Drawing.Point(209, 374);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(80, 44);
             this.btnAdd.TabIndex = 1;
@@ -259,7 +262,7 @@ namespace WFA_PhoneBook_DC
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnDelete.Image = global::WFA_PhoneBook_DC.Properties.Resources.trash_can_115312;
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDelete.Location = new System.Drawing.Point(64, 374);
+            this.btnDelete.Location = new System.Drawing.Point(52, 374);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(73, 44);
             this.btnDelete.TabIndex = 1;
@@ -329,6 +332,26 @@ namespace WFA_PhoneBook_DC
             this.toolTip1.IsBalloon = true;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // btnZtoA
+            // 
+            this.btnZtoA.Image = global::WFA_PhoneBook_DC.Properties.Resources.sort_alphabetical_descending_icon_135170;
+            this.btnZtoA.Location = new System.Drawing.Point(305, 51);
+            this.btnZtoA.Name = "btnZtoA";
+            this.btnZtoA.Size = new System.Drawing.Size(38, 37);
+            this.btnZtoA.TabIndex = 3;
+            this.btnZtoA.UseVisualStyleBackColor = true;
+            this.btnZtoA.Click += new System.EventHandler(this.btnZtoA_Click);
+            // 
+            // btnAtoZ
+            // 
+            this.btnAtoZ.Image = global::WFA_PhoneBook_DC.Properties.Resources.sort_alphabetical_ascending_icon_135171;
+            this.btnAtoZ.Location = new System.Drawing.Point(261, 51);
+            this.btnAtoZ.Name = "btnAtoZ";
+            this.btnAtoZ.Size = new System.Drawing.Size(38, 37);
+            this.btnAtoZ.TabIndex = 3;
+            this.btnAtoZ.UseVisualStyleBackColor = true;
+            this.btnAtoZ.Click += new System.EventHandler(this.btnAtoZ_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -379,6 +402,8 @@ namespace WFA_PhoneBook_DC
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btnAtoZ;
+        private System.Windows.Forms.Button btnZtoA;
     }
 }
 
