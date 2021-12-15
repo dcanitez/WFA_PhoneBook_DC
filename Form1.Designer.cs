@@ -33,7 +33,7 @@ namespace WFA_PhoneBook_DC
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lbContacts = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.gbContactInfo = new System.Windows.Forms.GroupBox();
@@ -71,7 +71,7 @@ namespace WFA_PhoneBook_DC
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.lbContacts);
-            this.splitContainer1.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.txtSearch);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             // 
             // splitContainer1.Panel2
@@ -93,14 +93,15 @@ namespace WFA_PhoneBook_DC
             this.lbContacts.TabIndex = 2;
             this.lbContacts.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbContacts_MouseDoubleClick);
             // 
-            // textBox1
+            // txtSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(128, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "Search";
-            this.textBox1.Size = new System.Drawing.Size(183, 27);
-            this.textBox1.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.textBox1, "Search the contact list");
+            this.txtSearch.Location = new System.Drawing.Point(128, 21);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.PlaceholderText = "Search";
+            this.txtSearch.Size = new System.Drawing.Size(183, 27);
+            this.txtSearch.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.txtSearch, "Search the contact list");
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label1
             // 
@@ -236,6 +237,7 @@ namespace WFA_PhoneBook_DC
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolTip1.SetToolTip(this.btnSave, "Save changes");
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnAdd
             // 
@@ -265,6 +267,7 @@ namespace WFA_PhoneBook_DC
             this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolTip1.SetToolTip(this.btnDelete, "Delete the selected person");
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // label6
             // 
@@ -356,7 +359,7 @@ namespace WFA_PhoneBook_DC
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ListBox lbContacts;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddNew;
         private System.Windows.Forms.GroupBox gbContactInfo;
